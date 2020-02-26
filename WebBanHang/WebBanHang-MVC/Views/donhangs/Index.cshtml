@@ -1,0 +1,78 @@
+﻿@model IEnumerable<WebBanHang_MVC.Models.donhang>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Danh Sách đơn hàng</h2>
+
+
+<table class="table">
+    <tr>
+
+        <th>
+            Trạng thái
+        </th>
+        <th>
+            Thời gian
+        </th>
+        <th>
+            Địa chỉ
+        </th>
+        <th>
+            Số điện thoại
+        </th>
+        <th>
+            Thành tiền
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+
+    <td>
+        @switch (item.trangthai)
+        {
+            case 0:<a href="#" class="btn btn-danger btn-sm">Đã hủy</a> ; break;
+            case 1:<a href="#" class="btn btn-danger btn-sm">Chờ xác nhận</a> ; break;
+            case 2:<a href="#" class="btn btn-danger btn-sm">Đang giao</a> ; break;
+            case 3:<a href="#" class="btn btn-danger btn-sm">Hoàn thành</a>; break;
+        }
+
+    </td>
+    <td>
+        @if (item.trangthai != 3)
+        {
+            <p>Ngày đặt:</p>
+            @Html.DisplayFor(modelItem => item.ngaytao)
+        }
+        else
+        {
+            <p>Ngày hoàn thành:</p>
+            @Html.DisplayFor(modelItem => item.ngayxn)
+        }
+
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Diachi)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.user_soDT)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.thanhtien)
+    </td>
+    <td>
+    <td>
+        @if (item.trangthai != 3)
+        {
+            <a href="@Url.Action("huydon",new { id_donhang = item.id})" onclick="return confirm('Bạn có chắc muốn hủy ?');" class="btn btn-danger btn-sm">Hủy đơn</a>
+        }
+    </td>
+
+</tr>
+}
+
+</table>

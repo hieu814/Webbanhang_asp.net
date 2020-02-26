@@ -1,0 +1,32 @@
+﻿@using WebBanHang_MVC.Models
+<div class="headertop_desc">
+    <div class="call">
+        <p><span>Need help?</span> call us <span class="number">1-22-3456789</span></p>
+    </div>
+    <div class="account_desc">
+        <ul>
+            @{
+                if (Session["TaiKhoan"] == null)
+                {
+                    <li><a href="@Url.Action("dangki","dangnhap")">Đăng kí</a></li>
+                    <li><a href="@Url.Action("DangNhap","DangNhap")">Đăng nhập</a></li>
+                }
+                else
+                {
+                    <li>
+                        <a href="@Url.Action("index","donhangs")">
+                            @{
+                                user user = (user)Session["TaiKhoan"];
+                                
+                                <span>Xin chào :</span> @user.Ten;
+                            }
+                        </a>
+                    </li>
+                    <li><a href="@Url.Action("DangXuat","DangNhap")">Đăng xuất</a></li>
+                }
+            }
+        </ul>
+         
+    </div>
+    <div class="clear"></div>
+</div>

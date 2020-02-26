@@ -1,0 +1,96 @@
+﻿@using WebBanHang_MVC.Models
+@{
+    ViewBag.Title = "Chitietdonhang";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <tr>
+                    <th>Hình</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Số lượng</th>
+                    <th>Đơn giá</th>
+                    <th>Thành tiền</th>
+
+                </tr>
+                @foreach (GioHang item in ViewBag.gh)
+                {
+                    <tr>
+                        <td class="text-center"><img src="~/images/sanpham/@item.avatar" width="70" height="60" /> </td>
+                        <td><a target="_blank" href="#"> @item.TenSanPham </a> </td>
+                        <td>
+                            @item.soluong
+                        </td>
+                        <td> @item.dongia VNĐ </td>
+                        <td> @item.tongsotien VNĐ </td>
+
+                        @*<td> <a href="@Url.Action("XoaKhoiGio",new { id_sanpham = item.id_sanpham})" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này?');" class="btn btn-danger btn-sm">Xóa</a> </td>*@
+                    </tr>
+                }
+
+                <tr>
+                    <td></td>
+                    <td class="text-right"></td>
+                    <td> </td>
+                    <td class="text-right">Tổng thành tiền:</td>
+                    <td>@Model.thanhtien VND</td>
+
+                    @*onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này?');"*@
+
+                </tr>
+                <tr>
+                    <th>Ghi chú:</th>
+                    <td colspan="4">
+                        @Model.ghichu
+
+                    </td>
+                </tr>
+                <tr>
+                    <th>Địa chỉ:</th>
+                    <td colspan="4">
+                        @Model.Diachi
+
+                    </td>
+                </tr>
+                <tr>
+                    <th>Số điện thoại:</th>
+                    <td colspan="4">
+                        @Model.user_soDT
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td rowspan="2">
+                    <td>
+                        @switch (Model.trangthai)
+                        {
+                            case 0:<a href="#" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này?');" class="btn btn-danger btn-sm">Đã hủy</a> ; break;
+                            case 1:<a href="@Url.Action("CapnhatTT",new { id = Model.id,tt=Model.trangthai})" onclick="return confirm('Bạn có chắc muốn xác nhận đơn hàng này?');" class="btn btn-danger btn-sm">Xác nhận đơn hàng này</a> ; break;
+                            case 2:<a href="@Url.Action("CapnhatTT",new { id = Model.id,tt=Model.trangthai})" onclick="return confirm('Bạn có chắc không?');" class="btn btn-danger btn-sm">Xác nhận giao hàng thành công</a> ; break;
+                            case 3:<a href="#" class="btn btn-danger btn-sm">Đã thanh toán</a>; break;
+                        }
+
+                    </td>
+                    <td>
+                        <a href="@Url.Action("CapnhatTT",new { id = Model.id,tt=0})" onclick="return confirm('Bạn có chắc muốn hủy đơn hàng này?');" class="btn btn-danger btn-sm">Hủy đơn</a>
+                    </td>
+                </tr>
+                @*<tr >
+            <td rowspan="2">
+
+            </td>
+
+        </tr>*@
+
+
+
+            </table>
+
+            @*<a href="@Url.Action("XoaKhoiGio",new { id_sanpham = item.id_sanpham})" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này?');" class="btn btn-danger btn-sm">Xóa</a>*@
+        </div>
+    </div>
+</div>

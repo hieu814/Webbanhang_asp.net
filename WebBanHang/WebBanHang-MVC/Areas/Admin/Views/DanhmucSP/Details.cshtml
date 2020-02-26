@@ -1,0 +1,27 @@
+﻿@model WebBanHang_MVC.Models.Danhmuc
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Danhmuc</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tenHDT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tenHDT)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a href="@Url.Action("Edit", new { id = Model.id })" class="btn btn-primary btn-sm">Sửa</a>
+    <a href="@Url.Action("index")" class="btn btn-primary btn-sm">Back</a>
+</p>

@@ -1,0 +1,106 @@
+﻿@model IEnumerable<WebBanHang_MVC.Models.donhang>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fas fa-table"></i>
+            Sản phẩm
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <span>Lọc theo:</span><a href="@Url.Action("index")" class="btn btn-danger btn-sm">Tất cả</a>
+                <a href="@Url.Action("index", new { loaidonhang = "1" })" class="btn btn-danger btn-sm">Chưa xác nhận</a>
+                <a href="@Url.Action("index", new { loaidonhang = "2" })" class="btn btn-danger btn-sm">Đang giao</a>
+                <a href="@Url.Action("index", new { loaidonhang = "3" })" class="btn btn-danger btn-sm">Hoàn thành</a>
+                <a href="@Url.Action("index", new { loaidonhang = "0" })" class="btn btn-danger btn-sm">Đã hủy</a>
+
+
+                <h1>@ViewBag.test</h1>
+
+
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.user.Ten)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.user.Username)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.Diachi)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.user_soDT)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.thanhtien)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ngaytao)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.trangthai)
+                            </th>
+                            <th></th>
+
+                        </tr>
+                    </thead>
+
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.user.Ten)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.user.Username)
+                            </td>
+
+                            <td>
+                                <div>
+                                    <ul class="dropdown-menu" style="display: none;">
+                                        <li><a class="btn btn-danger btn-sm">sdsad</a></li>
+                                        <li><a>sdsad</a></li>
+                                    </ul>
+                                </div>
+                                @Html.DisplayFor(modelItem => item.Diachi)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.user_soDT)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.thanhtien)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ngaytao)
+
+                            </td>
+                            <td>
+                                @switch (item.trangthai)
+                                {
+                                    case 0:<a href="#" class="btn btn-danger btn-sm">Đã hủy</a> ; break;
+                                    case 1:<a href="#" class="btn btn-danger btn-sm">Chờ xác nhận</a>; break;
+                                    case 2:<a href="#" class="btn btn-danger btn-sm">Đang giao</a> ; break;
+                                    case 3:<a href="#" class="btn btn-danger btn-sm">Hoàn thành</a>; break;
+                                }
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Chitietdonhang", new { id = item.id })" class="btn btn-primary btn-sm">Chi tiết</a>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+                <br />
+                @*<a href="@Url.Action("create", "sanphams")" class="btn btn-danger"><i class="fas fa-plus-circle"></i>&nbsp;&nbsp;Thêm mới</a>*@
+            </div>
+        </div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+    </div>

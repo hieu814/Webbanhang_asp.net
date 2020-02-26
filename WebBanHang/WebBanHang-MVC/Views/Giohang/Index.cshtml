@@ -1,0 +1,83 @@
+﻿@using WebBanHang_MVC.Models
+@model IList<GioHang>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="text-center" style="font-size:13px; padding:25px;font-weight:200;color:darkgray;">
+    <h5>GIỎ HÀNG CỦA BẠN</h5>
+</div>
+
+
+@if (Model == null || Model.Count == 0)
+{
+    <p class="text-info text-center">
+        Giỏ hàng của bạn rỗng!
+    </p>
+}
+else
+{
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Hình</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Số lượng</th>
+                        <th>Đơn giá</th>
+                        <th>Thành tiền</th>
+                        <th>Chức năng</th>
+                    </tr>
+                    @foreach (GioHang item in Model)
+                    {
+                        <tr>
+                            <td class="text-center"><img src="~/images/sanpham/@item.avatar" width="70" height="60" /> </td>
+                            <td><a target="_blank" href="@Url.Action("Index", "ChiTietSanPham", new { id = item.id_sanpham })"> @item.TenSanPham </a> </td>
+                            <td>
+                                <form action="@Url.Action("SuaSoLuong")" method="get">
+                                    <input type="hidden" name="id_sanpham" value="@item.id_sanpham" />
+                                    <input type="number" min="1" step="1" name="soluongmoi" value="@item.soluong" />
+                                    <button type="submit" class="btn btn-primary btn-sm"> Cập nhật </button>
+                                </form>
+                            </td>
+                            <td> @item.dongia VNĐ </td>
+                            <td> @item.tongsotien VNĐ </td>
+
+                            <td> <a href="@Url.Action("XoaKhoiGio",new { id_sanpham = item.id_sanpham})" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này?');" class="btn btn-danger btn-sm">Xóa</a> </td>
+                        </tr>
+                    }
+
+                <tr>
+
+                    <td></td>
+                    <td class="text-right">Tổng số lượng:</td>
+                    <td>  @Model.Sum(m => m.soluong) </td>
+                    <td class="text-right">Tổng thành tiền:</td>
+                    <td>@Model.Sum(m => m.tongsotien) VNĐ </td>
+                    @if (Session["taikhoan"] == null)
+                    {
+                        <td> <a href="@Url.Action("dangnhap","dangnhap")" class="btn btn-danger btn-sm">Đặt hàng</a> </td>
+                    }
+                    else
+                    {
+                        if (Session["giohang"] == null)
+                        {
+                            <td> <a href="@Url.Action("index","home")" class="btn btn-danger btn-sm">Đặt hàng</a> </td>
+                        }
+                        else
+                        {
+                            <td> <a href="@Url.Action("TaoDonHang","donhangs")" class="btn btn-danger btn-sm">Đặt hàng</a> </td>
+                        }
+                    }
+                    @*onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này?');"*@
+
+                </tr>
+
+                </table>
+            </div>
+        </div>
+    </div>
+}
+

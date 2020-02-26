@@ -1,0 +1,98 @@
+﻿@model WebBanHang_MVC.Models.sanpham
+
+@{
+    ViewBag.Title = "Chitietsp";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <div class="wrap">b
+
+        <div class="main">
+            <div class="content">
+                <div class="content_top">
+                    <div class="back-links">
+                        <p><a href="index.html">Home</a> >>>> <a href="#">Electronics</a></p>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="section group">
+                    <div class="cont-desc span_1_of_2">
+                        <div class="product-details">
+                            <div class="grid images_3_of_2">
+                                <div id="container">
+                                    <div id="products_example">
+                                        <div id="products">
+                                            <div class="">
+                                                <a href="#" target="_blank"><img src="~/images/sanpham/@Model.avatar" alt=" " /></a>
+
+                                            </div>
+                                            <ul class="pagination">
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="desc span_3_of_2">
+                                <h2>@Model.tenSP</h2>
+                                <p>Loại sản phẩm: @Model.Danhmuc.tenHDT</p>
+
+                                <div class="price">
+                                    <p><span>@Model.gia VND</span></p>
+                                </div>
+                                <div class="available">
+
+                                </div>
+                                <div class="share-desc">
+                                    <div class="share">
+                                        <p>Share Product :</p>
+                                        <ul>
+                                            <li><a href="#"><img src="images/facebook.png" alt="" /></a></li>
+                                            <li><a href="#"><img src="images/twitter.png" alt="" /></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="button"><span><a href="@Url.Action("ThemVaoGio", "giohang", new { @id_sanpham=Model.id })">Add to Cart</a></span></div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="wish-list">
+                                    @*<ul>
+                                        <li class="wish"><a href="#">Add to Wishlist</a></li>
+                                        <li class="compare"><a href="#">Add to Compare</a></li>
+                                    </ul>*@
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="product_desc">
+                            <div id="horizontalTab">
+                                <ul class="resp-tabs-list">
+                                    <li>Chi tiết sản phẩm</li>
+                                    <div class="clear"></div>
+                                </ul>
+                                <div class="resp-tabs-container">
+                                    <div class="product-desc">
+                                        <dl>
+                                            @if (Model.chitiet != null)
+                                            {
+                                                <dt>
+                                                    @Html.Raw(Model.chitiet.Replace(Environment.NewLine, "<br/>"))
+
+                                                </dt>
+                                            }
+                                            else
+                                            {
+                                                <dt>Không có chi tiết</dt>
+                                            }
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    
+</div>
+    
