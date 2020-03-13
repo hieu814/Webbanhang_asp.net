@@ -10,7 +10,7 @@
             <div class="content">
                 <div class="content_top">
                     <div class="back-links">
-                        <p><a href="index.html">Home</a> >>>> <a href="#">Electronics</a></p>
+                        <p><a href="@Url.Action("index","home")">Home</a> >>>> <a href="@Url.Action("danhsach", new { @tukhoa=@Model.Danhmuc.tenHDT })">@Model.Danhmuc.tenHDT</a></p>
                     </div>
                     <div class="clear"></div>
                 </div>
@@ -36,7 +36,7 @@
                                 <p>Loại sản phẩm: @Model.Danhmuc.tenHDT</p>
 
                                 <div class="price">
-                                    <p><span>@Model.gia VND</span></p>
+                                    <p><span>@Model.gia.ToString("###,###,###,### VND").Replace(',', '.')</span></p>
                                 </div>
                                 <div class="available">
 

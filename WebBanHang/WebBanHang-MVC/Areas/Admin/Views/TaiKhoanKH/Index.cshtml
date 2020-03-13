@@ -63,7 +63,7 @@
                                 </td>
                                 <td>
                                     <a href="@Url.Action("Edit", new { id = item.id })" class="btn btn-primary btn-sm">Sửa</a>
-                                    <a href="@Url.Action("Delete",new { id_donhang = item.id})" onclick="return confirm('Bạn có chắc muốn xóa ?');" class="btn btn-danger btn-sm">Xóa</a>
+                                    <a href="@Url.Action("Delete",new { id = item.id})" onclick="return confirm('Bạn có chắc muốn xóa ?');" class="btn btn-danger btn-sm">Xóa</a>
                                 </td>
                             </tr>
                         }

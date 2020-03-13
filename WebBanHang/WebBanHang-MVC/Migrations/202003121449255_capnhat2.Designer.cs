@@ -7,13 +7,13 @@ namespace WebBanHang_MVC.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class capnhatsp : IMigrationMetadata
+    public sealed partial class capnhat2 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(capnhatsp));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(capnhat2));
         
         string IMigrationMetadata.Id
         {
-            get { return "202002201609366_capnhatsp"; }
+            get { return "202003121449255_capnhat2"; }
         }
         
         string IMigrationMetadata.Source

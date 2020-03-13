@@ -8,6 +8,9 @@ using System.Web;
 using System.Web.Mvc;
 using WebBanHang_MVC.Models;
 using System.IO;
+using System.Data.Entity.Validation;
+using System.Diagnostics;
+
 namespace WebBanHang_MVC.Areas.Admin.Controllers
 {
     public class sanphamsController : BaseController
@@ -42,26 +45,43 @@ namespace WebBanHang_MVC.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(HttpPostedFileBase file, sanpham sanphams)
         {
-            if (file != null)
+            try
             {
-                string ImageName = System.IO.Path.GetFileName(file.FileName);
-                string physicalPath = Server.MapPath("~/images/sanpham/" + ImageName);
-                sanphams.ngaytao = DateTime.Now;
-                // save image in folder
-                file.SaveAs(physicalPath);
-                sanphams.avatar = ImageName;
+                if (file != null)
+                {
+                    string ImageName = System.IO.Path.GetFileName(file.FileName);
+                    string physicalPath = Server.MapPath("~/images/sanpham/" + ImageName);
+                    sanphams.ngaytao = DateTime.Now;
+                    // save image in folder
+                    file.SaveAs(physicalPath);
+                    sanphams.avatar = ImageName;
+                }
+
+                if (ModelState.IsValid)
+                {
+                    db.sanphams.Add(sanphams);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+
+                ViewBag.ID_danhmuc = new SelectList(db.Danhmucs, "id", "tenHDT", sanphams.ID_danhmuc);
+                return View(sanphams);
             }
-
-            if (ModelState.IsValid)
+            catch (DbEntityValidationException dbEx)
             {
-
-                db.sanphams.Add(sanphams);
-                db.SaveChanges();
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        Trace.TraceInformation("Property: {0} Error: {1}",
+                                                validationError.PropertyName,
+                                                validationError.ErrorMessage);
+                    }
+                }
                 return RedirectToAction("Index");
-            }
 
-            ViewBag.ID_danhmuc = new SelectList(db.Danhmucs, "id", "tenHDT", sanphams.ID_danhmuc);
-            return View(sanphams);
+            }
+            
         }
         public ActionResult Edit(int? id)
         {
@@ -83,11 +103,17 @@ namespace WebBanHang_MVC.Areas.Admin.Controllers
         {
             if (file != null)
             {
+                
                 string ImageName = System.IO.Path.GetFileName(file.FileName);
-                string physicalPath = Server.MapPath("~/images/sanpham/" + ImageName);
+                if(System.IO.File.Exists("~/images/sanpham/" + sanpham.avatar))
+                {
+                    System.IO.File.Delete("~/images/sanpham/" + sanpham.avatar);
+                }
 
+                string physicalPath = Server.MapPath("~/images/sanpham/" + ImageName);
                 // save image in folder
-                file.SaveAs(physicalPath);               
+                file.SaveAs(physicalPath);
+
                 sanpham.avatar = ImageName;
             }
             if (ModelState.IsValid)
@@ -113,7 +139,10 @@ namespace WebBanHang_MVC.Areas.Admin.Controllers
 
                 
                 sanpham sanpham = db.sanphams.Find(id);
-                System.IO.File.Delete("~/images/sanpham/" + sanpham.avatar);
+                if (System.IO.File.Exists("~/images/sanpham/" + sanpham.avatar))
+                {
+                    System.IO.File.Delete("~/images/sanpham/" + sanpham.avatar);
+                }
                 db.sanphams.Remove(sanpham);
                 db.SaveChanges();
                 

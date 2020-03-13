@@ -12,7 +12,7 @@ namespace WebBanHang_MVC.Areas.Admin.Controllers
         // GET: Admin/Base
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            admin session = (admin)Session["TaiKhoan"];
+            admin session = (admin)Session["admin"];
             if (session == null)
             {
                 filterContext.Result = new RedirectToRouteResult(new System.Web.Routing.RouteValueDictionary(new { controller = "admin", action = "Login", Area = "admin" }));

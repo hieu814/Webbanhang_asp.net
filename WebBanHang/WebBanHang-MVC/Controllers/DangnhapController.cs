@@ -45,20 +45,26 @@ namespace WebBanHang_MVC.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Dangki(user users)
+        public ActionResult Dangki(user user1)
         {
-           
 
-            if (ModelState.IsValid)
+            var dangki = from i in db.users where i.Username == user1.Username select i;
+            if (dangki ==null)
             {
-                users.ngaytao = DateTime.Now;
-                db.users.Add(users);
+                user1.ngaytao = DateTime.Now;
+                db.users.Add(user1);
                 db.SaveChanges();
                 return RedirectToAction("dangnhap");
+                
+            }
+            else
+            {
+                ViewBag.loi = "Tài khoản đã tồn tại";
+                return View();
             }
 
            
-            return View(users);
+            
         }
         public ActionResult DangXuat()
         {

@@ -43,71 +43,7 @@ namespace WebBanHang_MVC.Areas.Admin.Controllers
             ViewBag.gh = ct;
             return View(donhang);
         }
-        [HttpPost]
-        //public ActionResult Chitietdonhang(int id)
-        //{
-
-        //    return View();
-        //}
-        // GET: Admin/Donhang/Create
-        public ActionResult Create()
-        {
-            ViewBag.user_id = new SelectList(db.users, "id", "Ten");
-            return View();
-        }
-
-        // POST: Admin/Donhang/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,trangthai,user_id,Diachi,user_soDT,thanhtien,ngaytao")] donhang donhang)
-        {
-            if (ModelState.IsValid)
-            {
-                db.donhangs.Add(donhang);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.user_id = new SelectList(db.users, "id", "Ten", donhang.user_id);
-            return View(donhang);
-        }
-
-        // GET: Admin/Donhang/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            donhang donhang = db.donhangs.Find(id);
-            if (donhang == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.user_id = new SelectList(db.users, "id", "Ten", donhang.user_id);
-            return View(donhang);
-        }
-
-        // POST: Admin/Donhang/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,trangthai,user_id,Diachi,user_soDT,thanhtien,ngaytao")] donhang donhang)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(donhang).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.user_id = new SelectList(db.users, "id", "Ten", donhang.user_id);
-            return View(donhang);
-        }
-
-        // GET: Admin/Donhang/Delete/5
+        
         public RedirectToRouteResult Delete(int? id)
         {
             if (id == null)
@@ -131,7 +67,7 @@ namespace WebBanHang_MVC.Areas.Admin.Controllers
             else
             {           
                 donhang donhang = db.donhangs.Find(id);
-                if (donhang.trangthai == tt && tt!=2)
+                if (donhang.trangthai == tt && tt!=3)
                 {
                     donhang.trangthai++;
 

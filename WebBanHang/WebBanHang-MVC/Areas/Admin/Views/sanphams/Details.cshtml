@@ -32,7 +32,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.gia)
+            @Model.gia.ToString("###,###,###,### VND").Replace(',', '.')
         </dd>
 
         <dt>

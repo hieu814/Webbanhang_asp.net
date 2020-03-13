@@ -19,9 +19,9 @@
                 <div class="card-body-icon">
                     <i class="fas fa-fw fa-comments"></i>
                 </div>
-                <div class="mr-5">Thể loại: @*@ViewBag.dem*@</div>
+                <div class="mr-5">Danh mục sản phẩm @ViewBag.danhmuc</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="@Url.Action("Index","Category")">
+            <a class="card-footer text-white clearfix small z-1" href="@Url.Action("Index","danhmucsp")">
                 <span class="float-left">Xem chi tiết</span>
                 <span class="float-right">
                     <i class="fas fa-angle-right"></i>
@@ -67,9 +67,9 @@
                 <div class="card-body-icon">
                     <i class="fas fa-fw fa-life-ring"></i>
                 </div>
-                <div class="mr-5">Tài khoản: @ViewBag.demuser</div>
+                <div class="mr-5">Tài khoản khách hàng: @ViewBag.demuser</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="@Url.Action("Index","User")">
+            <a class="card-footer text-white clearfix small z-1" href="@Url.Action("Index","taikhoankh")">
                 <span class="float-left">Xem chi tiết</span>
                 <span class="float-right">
                     <i class="fas fa-angle-right"></i>
@@ -141,7 +141,7 @@
                             @Html.DisplayFor(modelItem => item.user_soDT)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.thanhtien)
+                            @item.thanhtien.ToString("###,###,###,### VND").Replace(',', '.')
                         </td>
                         <td>
                             @if (item.trangthai != 3)
@@ -180,52 +180,5 @@
 
 
 <!-- DataTables Example -->
-<div class="card mb-3">
-    <div class="card-header">
-        <i class="fas fa-table"></i>
-        Phản hồi nhiều nhất
-    </div>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>STT</th>
-                        <th>Tên</th>
-                        <th>Địa chỉ</th>
-                        <th>Số điện thoại</th>
-                        <th>Email</th>
-                        <th>Tổng số bình luận</th>
-                        <th>Chi tiết</th>
-                    </tr>
-                </thead>
-                <tfoot>
-                    <tr>
-                        <th>STT</th>
-                        <th>Tên</th>
-                        <th>Địa chỉ</th>
-                        <th>Số điện thoại</th>
-                        <th>Email</th>
-                        <th>Tổng số bình luận</th>
-                        <th>Chi tiết</th>
-                    </tr>
-                </tfoot>
-                <tbody>
-                    @*@foreach (var i in @ViewBag.SumCmt)
-                        {
-                            <tr>
-                                <td>@i.id</td>
-                                <td>@i.name</td>
-                                <td>@i.address</td>
-                                <td>@i.phone</td>
-                                <td>@i.email</td>
-                                <td>@i.feedbacks.Count</td>
-                                <td><a href="@Url.Action("Comment", "User", new {name= i.name, id = i.id})" class="btn btn-primary" title="Xem"><i class="fas fa-eye"></i>&nbsp;&nbsp; Xem</a></td>
-                            </tr>
-                        }*@
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
+
 

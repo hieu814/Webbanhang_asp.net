@@ -143,13 +143,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202002180546180_update.cs" />
-    <Compile Include="Migrations\202002180546180_update.Designer.cs">
-      <DependentUpon>202002180546180_update.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202002201609366_capnhatsp.cs" />
-    <Compile Include="Migrations\202002201609366_capnhatsp.Designer.cs">
-      <DependentUpon>202002201609366_capnhatsp.cs</DependentUpon>
+    <Compile Include="Migrations\202003121449255_capnhat2.cs" />
+    <Compile Include="Migrations\202003121449255_capnhat2.Designer.cs">
+      <DependentUpon>202003121449255_capnhat2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\admin.cs" />
@@ -1775,6 +1771,9 @@
     <Content Include="Images\sanpham\new-pic4.jpg" />
     <Content Include="Images\sanpham\preview.jpg" />
     <Content Include="Images\sanpham\thumbnailslide-1.jpg" />
+    <Content Include="Images\web\giohang - Copy.png" />
+    <Content Include="Images\web\logo.png" />
+    <Content Include="Images\web\online.jpg" />
     <Content Include="Images\web\search.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -1935,7 +1934,6 @@
     <Content Include="Areas\Admin\Style\template\vendor\jquery\jquery.slim.min.map" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\sanphams\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\sanphams\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\sanphams\Details.cshtml" />
     <Content Include="Areas\Admin\Views\sanphams\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\sanphams\Index.cshtml" />
@@ -1946,8 +1944,6 @@
     <Content Include="Areas\Admin\Views\DanhmucSP\Details.cshtml" />
     <Content Include="Areas\Admin\Views\DanhmucSP\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\DanhmucSP\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Donhang\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Donhang\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Donhang\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Donhang\Chitietdonhang.cshtml" />
     <Content Include="Areas\Admin\Views\Donhang\loaidonhang.cshtml" />
@@ -2003,11 +1999,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202002180546180_update.resx">
-      <DependentUpon>202002180546180_update.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202002201609366_capnhatsp.resx">
-      <DependentUpon>202002201609366_capnhatsp.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202003121449255_capnhat2.resx">
+      <DependentUpon>202003121449255_capnhat2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

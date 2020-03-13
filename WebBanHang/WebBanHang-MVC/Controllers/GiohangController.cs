@@ -23,20 +23,18 @@ namespace WebBanHang_MVC.Controllers
                 Session["giohang"] = new List<GioHang>();  // Khởi tạo Session["giohang"] là 1 List<CartItem>
             }
 
-            List<GioHang> giohang = Session["giohang"] as List<GioHang>;  // Gán qua biến giohang dễ code
-            //giohang.Count
-            // Kiểm tra xem sản phẩm khách đang chọn đã có trong giỏ hàng chưa
+            List<GioHang> giohang = Session["giohang"] as List<GioHang>;
 
-            if (giohang.FirstOrDefault(m => m.id_sanpham == id_sanpham) == null) // ko co sp nay trong gio hang
+            if (giohang.FirstOrDefault(m => m.id_sanpham == id_sanpham) == null) 
             {
-                sanpham sp = db.sanphams.Find(id_sanpham);  // tim sp theo sanPhamID
+                sanpham sp = db.sanphams.Find(id_sanpham); 
 
                 GioHang newItem = new GioHang();
                 newItem.id_sanpham = id_sanpham;
                     newItem.TenSanPham = sp.tenSP;
                     newItem.soluong = 1;
                     newItem.avatar = sp.avatar;
-                newItem.dongia = sp.gia;
+                newItem.dongia = sp.gia*(100-sp.khuyenmai)/100;
 
 
                     //to = sp.price

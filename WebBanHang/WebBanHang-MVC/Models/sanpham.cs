@@ -24,9 +24,9 @@
         [Display(Name = "Tên sản phẩm")]
         public string tenSP { get; set; }
         [Display(Name = "Giá")]
-        public double gia { get; set; }
+        public int gia { get; set; }
         [Display(Name = "Khuyến mãi")]
-        public int? khuyenmai { get; set; }
+        public int khuyenmai { get; set; }
 
         [StringLength(50)]
         [Display(Name = "Hình ảnh")]

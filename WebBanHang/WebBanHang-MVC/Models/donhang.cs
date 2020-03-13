@@ -29,7 +29,7 @@
         [Display(Name = "Số điện thoại")]
         public string user_soDT { get; set; }
         [Display(Name = "Thành tiền")]
-        public double? thanhtien { get; set; }
+        public int thanhtien { get; set; }
         [Display(Name = "Ngày đặt")]
         public DateTime? ngaytao { get; set; }
         [Display(Name = "Ngày hoàn thành")]

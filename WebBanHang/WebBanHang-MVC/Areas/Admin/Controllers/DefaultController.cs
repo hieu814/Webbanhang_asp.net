@@ -17,10 +17,15 @@ namespace WebBanHang_MVC.Areas.Admin.Controllers
             var ds = db.donhangs.Include("user").Where(x => x.trangthai == 1);
             var donhang = db.donhangs.Where(x => x.trangthai < 3).ToList();
             var sanpham = db.sanphams.ToList();
-            ViewBag.sanpham = sanpham.Count;
+            var dm = db.Danhmucs.ToList();
+
+            var dsuser = db.users.ToList();
+            ViewBag.demuser = dsuser.Count();
+            ViewBag.sanpham = sanpham.Count();
             ViewBag.donhangmoi = donhang.Count();
-            
-            
+            ViewBag.danhmuc = dm.Count();
+
+
             return View(ds.ToList());
         }
        

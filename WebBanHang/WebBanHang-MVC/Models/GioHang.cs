@@ -15,9 +15,9 @@ namespace WebBanHang_MVC.Models
 
         public int? id_sanpham { get; set; }
 
-        public int? soluong { get; set; }
+        public int soluong { get; set; }
 
-        public double? tongsotien { get {
+        public int tongsotien { get {
                 return soluong * dongia;
             } }
 
@@ -29,7 +29,7 @@ namespace WebBanHang_MVC.Models
         [StringLength(50)]
         public string avatar { get; set; }
 
-        public double? dongia { get; set; }
+        public int dongia { get; set; }
 
         public virtual donhang donhang { get; set; }
 

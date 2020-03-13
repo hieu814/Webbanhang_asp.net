@@ -55,8 +55,8 @@ namespace WebBanHang_MVC.Areas.Admin.Controllers
             }
             else
             {
-                user sanpham = db.users.Find(id);
-                db.users.Remove(sanpham);
+                user us = db.users.Find(id);
+                db.users.Remove(us);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

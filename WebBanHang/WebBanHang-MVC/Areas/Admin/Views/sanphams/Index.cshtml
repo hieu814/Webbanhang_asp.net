@@ -37,10 +37,10 @@
                                 @Html.DisplayNameFor(model => model.soluong)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.chitiet)
+                                @Html.DisplayNameFor(model => model.Hang)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.Hang)
+                                @Html.DisplayNameFor(model => model.chitiet)
                             </th>
                             <th></th>
                         </tr>
@@ -58,7 +58,7 @@
                                 @item.tenSP
                             </td>
                             <td>
-                                @item.gia
+                                @item.gia.ToString("###,###,###,### VND").Replace(',', '.')
                             </td>
                             <td>
                                 @item.khuyenmai

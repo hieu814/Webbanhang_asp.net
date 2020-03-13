@@ -42,8 +42,8 @@ else
                                     <button type="submit" class="btn btn-primary btn-sm"> Cập nhật </button>
                                 </form>
                             </td>
-                            <td> @item.dongia VNĐ </td>
-                            <td> @item.tongsotien VNĐ </td>
+                            <td> @item.dongia.ToString("###,###,###,### VND").Replace(',', '.') </td>
+                            <td> @item.tongsotien.ToString("###,###,###,### VND").Replace(',', '.') </td>
 
                             <td> <a href="@Url.Action("XoaKhoiGio",new { id_sanpham = item.id_sanpham})" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này?');" class="btn btn-danger btn-sm">Xóa</a> </td>
                         </tr>
@@ -53,9 +53,9 @@ else
 
                     <td></td>
                     <td class="text-right">Tổng số lượng:</td>
-                    <td>  @Model.Sum(m => m.soluong) </td>
+                    <td>  @Model.Sum(m => m.soluong).ToString("###,###,###,### VND").Replace(',', '.') </td>
                     <td class="text-right">Tổng thành tiền:</td>
-                    <td>@Model.Sum(m => m.tongsotien) VNĐ </td>
+                    <td>@Model.Sum(m => m.tongsotien).ToString("###,###,###,### VND").Replace(',', '.')</td>
                     @if (Session["taikhoan"] == null)
                     {
                         <td> <a href="@Url.Action("dangnhap","dangnhap")" class="btn btn-danger btn-sm">Đặt hàng</a> </td>

@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Free Home Shoppe Website Template | Home :: w3layouts</title>
+    <title>Web bán hàng </title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="~/Content/css/style.css" rel="stylesheet" />
@@ -26,10 +26,10 @@
                 <div class="menu">
                     <ul style="margin-top: 0;margin-bottom: 10px;">
                         <li class="active"><a href="@Url.Action("index","home")">Trang chủ</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="delivery.html">Giao hàng</a></li>
-                        <li><a href="news.html">Tin tức</a></li>
-                        <li><a href="contact.html">Liên hệ</a></li>
+                        <li><a href="#">About</a></li>
+
+                        <li><a href="#">Tin tức</a></li>
+                        <li><a href="#">Liên hệ</a></li>
                         <div class="clear"></div>
                     </ul>
                 </div>
@@ -42,19 +42,20 @@
             </div>
             <div class="header_top">
                 <div class="logo">
-                    <a href="index.html"><img src="images/logo.png" alt="" /></a>
+                    <a href="@Url.Action("index","home")"><img src="~/images/web/logo.png" alt="" /></a>
                 </div>
                 <div class="cart">
                     @if (Session["giohang"] == null)
                     {
-                        <p>
-                            <span>Giỏ hàng:</span><div id="dd" class="wrapper-dropdown-2">
-                                0 sản phẩm(s)
-                                <ul class="dropdown">
-                                    <li>Không có sản phẩm nào.</li>
-                                </ul>
-                            </div>
-                        </p>
+                    <p>
+                        <a href="@Url.Action("index","giohang")"><img width="50" height="50" src="~/images/web/giohang - Copy.png" alt="" /></a>
+                        <span></span><div id="dd" class="wrapper-dropdown-2">
+                            0 sản phẩm(s)
+                            <ul class="dropdown">
+                                <li>Không có sản phẩm nào.</li>
+                            </ul>
+                        </div>
+                    </p>
 
                     }
                     else
@@ -62,12 +63,22 @@
 
                         List<GioHang> gh = Session["giohang"] as List<GioHang>;
 
-                        <p>
-                            <span><a href="@Url.Action("index","giohang")">Giỏ hàng:</a></span><div id="dd" class="wrapper-dropdown-2">
-                                @gh.Count sản phẩm(s)
+                <p>
+                    <a href="@Url.Action("index","giohang")"><img width="50" height="50" src="~/images/web/giohang - Copy.png" alt="" /></a>
+                    
+                    <span>
+                    </span><div id="dd" class="wrapper-dropdown-2">
+                        @gh.Count sản phẩm(s)
+                               <ul class="dropdown">
+                                   @foreach (GioHang i in gh)
+                                   {
+                                       <li>@i.TenSanPham</li>
+                                   }
 
-                            </div>
-                        </p>
+                               </ul>
+
+                    </div>
+                </p>
                     }
 
                 </div>

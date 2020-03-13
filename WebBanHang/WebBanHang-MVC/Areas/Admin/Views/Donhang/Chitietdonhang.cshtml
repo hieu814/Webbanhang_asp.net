@@ -36,7 +36,7 @@
                     <td class="text-right"></td>
                     <td> </td>
                     <td class="text-right">Tổng thành tiền:</td>
-                    <td>@Model.thanhtien VND</td>
+                    <td>@Model.thanhtien.ToString("###,###,###,### VND").Replace(',', '.') VND</td>
 
                     @*onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này?');"*@
 
@@ -76,7 +76,16 @@
 
                     </td>
                     <td>
-                        <a href="@Url.Action("CapnhatTT",new { id = Model.id,tt=0})" onclick="return confirm('Bạn có chắc muốn hủy đơn hàng này?');" class="btn btn-danger btn-sm">Hủy đơn</a>
+                        @if (Model.trangthai == 3)
+                        {
+                            <a> Ngày: @Model.ngayxn</a>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("CapnhatTT",new { id = Model.id,tt=0})" onclick="return confirm('Bạn có chắc muốn hủy đơn hàng này?');" class="btn btn-danger btn-sm">Hủy đơn</a>
+
+                        }
+
                     </td>
                 </tr>
                 @*<tr >

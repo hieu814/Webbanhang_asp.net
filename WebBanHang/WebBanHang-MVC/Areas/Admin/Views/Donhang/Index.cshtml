@@ -76,7 +76,7 @@
                                 @Html.DisplayFor(modelItem => item.user_soDT)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.thanhtien)
+                                @item.thanhtien.ToString("###,###,###,### VND").Replace(',', '.')
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.ngaytao)

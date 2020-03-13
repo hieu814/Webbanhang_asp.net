@@ -23,7 +23,7 @@ namespace WebBanHang_MVC.Areas.Admin.Controllers
             if (dangnhap != null)
             {
 
-                Session["TaiKhoan"] = dangnhap;
+                Session["admin"] = dangnhap;
                 return RedirectToAction("Index", "default");
             }
             else
